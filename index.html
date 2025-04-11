@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>strong-weak-password</title>
+    <link rel="stylesheet" href="/CSS/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="input-wrapper">
+        <input
+          type="password"
+          class="password-input"
+          placeholder="Enter your password"
+        />
+        <button type="submit" class="submit-button">
+          <img src="/IMAGE/arrow-right.svg" alt="" />
+        </button>
+        <p class="message">Password is <span class="strength"></span></p>
+      </div>
+    </div>
+    <script>
+      let passwordInput = document.querySelector(".password-input");
+      let passwordMessage = document.querySelector(".message");
+      let passwordStrength = document.querySelector(".strength");
+      passwordInput.addEventListener("input", () => {
+        if (passwordInput.value.length > 0) {
+          passwordMessage.style.display = "block";
+        } else {
+          passwordMessage.style.display = "none";
+        }
+        if (passwordInput.value.length < 4) {
+          passwordStrength.innerHTML = "weak";
+          passwordInput.style.borderColor = "red";
+          passwordMessage.style.color = "red";
+        } else if (passwordInput.value.length >= 4) {
+          passwordStrength.innerHTML = "strong";
+          passwordInput.style.borderColor = "green";
+          passwordMessage.style.color = "green";
+        }
+      });
+    </script>
+  </body>
+</html>
