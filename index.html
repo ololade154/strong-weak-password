@@ -25,16 +25,17 @@
       let passwordMessage = document.querySelector(".message");
       let passwordStrength = document.querySelector(".strength");
       passwordInput.addEventListener("input", () => {
-        if (passwordInput.value.length > 0) {
-          passwordMessage.style.display = "block";
-        } else {
+        let passwordValue = passwordInput.value;
+        if (passwordValue.length == 0) {
           passwordMessage.style.display = "none";
-        }
-        if (passwordInput.value.length < 4) {
+          passwordInput.style.borderColor = "#3e3e3e";
+        } else if (passwordValue.length >= 1 && passwordValue.length < 5) {
+          passwordMessage.style.display = "block";
           passwordStrength.innerHTML = "weak";
           passwordInput.style.borderColor = "red";
           passwordMessage.style.color = "red";
-        } else if (passwordInput.value.length >= 4) {
+        } else {
+          passwordMessage.style.display = "block";
           passwordStrength.innerHTML = "strong";
           passwordInput.style.borderColor = "green";
           passwordMessage.style.color = "green";
